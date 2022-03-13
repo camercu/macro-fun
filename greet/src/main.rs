@@ -1,5 +1,5 @@
-use ::clap::Parser;
 use amplify::amplify;
+use clap::Parser;
 
 /// A simple command line greeting for demo of Rust.
 #[amplify] // this must be top-most attribute to modify the underlying derive macro
