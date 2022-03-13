@@ -6,8 +6,8 @@ version = 3
 name = "amplify"
 version = "0.1.0"
 dependencies = [
+ "litrs",
  "quote",
- "syn",
 ]
 
 [[package]]
@@ -67,6 +67,7 @@ dependencies = [
 name = "greet"
 version = "0.1.0"
 dependencies = [
+ "amplify",
  "clap",
 ]
 
@@ -112,6 +113,15 @@ name = "libc"
 version = "0.2.119"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1bf2e165bb3457c8e098ea76f3e3bc9db55f87aa90d52d0e6be741470916aaa4"
+
+[[package]]
+name = "litrs"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f9275e0933cf8bb20f008924c0cb07a0692fe54d8064996520bf998de9eb79aa"
+dependencies = [
+ "proc-macro2",
+]
 
 [[package]]
 name = "memchr"

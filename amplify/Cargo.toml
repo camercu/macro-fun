@@ -7,8 +7,14 @@ description = "Attribute procedural macro to turn all string literals in a crate
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-syn = "1"
 quote = "1"
+litrs = "0.2"
 
 [lib]
 proc-macro = true
+
+[profile.release]
+strip = true  # Automatically strip symbols from the binary
+opt-level = "z"  # Optimize for size
+lto = true  # enable link-time optimizations
+panic = "abort"  # abort (not unwind) on panic
