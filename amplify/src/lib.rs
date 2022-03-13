@@ -35,3 +35,8 @@ fn make_uppercase(item: TokenStream) -> TokenStream {
 pub fn amplify(_attr: TokenStream, item: TokenStream) -> TokenStream {
     make_uppercase(item)
 }
+
+#[proc_macro]
+pub fn shout(item: TokenStream) -> TokenStream {
+    make_uppercase(item)
+}
