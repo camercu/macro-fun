@@ -32,11 +32,13 @@ fn make_uppercase(item: TokenStream) -> TokenStream {
 }
 
 #[proc_macro_attribute]
-pub fn amplify(_attr: TokenStream, item: TokenStream) -> TokenStream {
-    make_uppercase(item)
+pub fn amplify_attr(_attr: TokenStream, item: TokenStream) -> TokenStream {
+    let item = make_uppercase(item);
+    println!("{:#?}", item);
+    item
 }
 
 #[proc_macro]
-pub fn shout(item: TokenStream) -> TokenStream {
+pub fn amplify(item: TokenStream) -> TokenStream {
     make_uppercase(item)
 }

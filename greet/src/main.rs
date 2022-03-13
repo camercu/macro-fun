@@ -1,8 +1,20 @@
-use amplify::amplify;
+use amplify::amplify_attr;
 use clap::Parser;
+use serde::{Deserialize, Serialize};
+use serde_json;
+
+fn main() {
+    let args = Cli::parse();
+
+    greet(args.name);
+    show_json();
+}
 
 /// A simple command line greeting for demo of Rust.
-#[amplify] // this must be top-most attribute to modify the underlying derive macro
+// [amplify_attr] must be top-most attribute to modify the underlying derive macro.
+// It will AMPLIFY the doc strings.
+// TODO: get it to AMPLIFY the struct field names in the CLI parse output
+#[amplify_attr]
 #[derive(Parser, Debug)]
 #[clap(version)]
 struct Cli {
@@ -10,16 +22,30 @@ struct Cli {
     name: Option<String>,
 }
 
-fn main() {
-    let args = Cli::parse();
-
-    greet(args.name);
-}
-
-#[amplify]
+#[amplify_attr] // will AMPLIFY all str literals in the function
 fn greet(name: Option<String>) {
     match name {
         Some(name) => println!("Hello, {}!", name),
         None => println!("Hello, World!"),
     };
+}
+
+#[amplify_attr] // TODO: figure out how to make it AMPLIFY the struct fields on serialize
+#[derive(Debug, Serialize, Deserialize)]
+struct Person {
+    name: String,
+    age: u8,
+    social_security_number: String,
+}
+
+#[amplify_attr] // shows issue with json serialization names not getting AMPLIFIED
+fn show_json() {
+    let dude = Person {
+        name: "Bob".to_owned(),
+        age: 45,
+        social_security_number: "123-45-6789".to_owned(),
+    };
+
+    let json = serde_json::to_string(&dude).unwrap();
+    println!("Here's some json: {}", json);
 }
