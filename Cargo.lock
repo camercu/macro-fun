@@ -3,14 +3,6 @@
 version = 3
 
 [[package]]
-name = "amplify"
-version = "0.1.0"
-dependencies = [
- "litrs",
- "quote",
-]
-
-[[package]]
 name = "atty"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -67,8 +59,8 @@ dependencies = [
 name = "greet"
 version = "0.1.0"
 dependencies = [
- "amplify",
  "clap",
+ "macro-fun",
  "serde",
  "serde_json",
 ]
@@ -129,6 +121,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f9275e0933cf8bb20f008924c0cb07a0692fe54d8064996520bf998de9eb79aa"
 dependencies = [
  "proc-macro2",
+]
+
+[[package]]
+name = "macro-fun"
+version = "0.1.0"
+dependencies = [
+ "litrs",
+ "quote",
 ]
 
 [[package]]

@@ -7,6 +7,6 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "3", features = ["derive"] }
-amplify = { path = "../amplify" }
+macro-fun = { path = "../macro-fun" }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }

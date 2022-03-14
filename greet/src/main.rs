@@ -1,13 +1,22 @@
-use amplify::amplify_attr;
 use clap::Parser;
+use macro_fun::{amplify, amplify_attr, dev_only};
 use serde::{Deserialize, Serialize};
 use serde_json;
 
 fn main() {
-    let args = Cli::parse();
+    dev_only! {
+        println!("This line won't be in the release version!");
+    };
 
+    // demo amplifying the CLI help and greeting strings
+    let args = Cli::parse();
     greet(args.name);
+
+    // demo limitation of amplifying struct field names with serde
     show_json();
+
+    // targeted amplification using function-like macro
+    amplify!(println!("I love shouting!"));
 }
 
 /// A simple command line greeting for demo of Rust.
