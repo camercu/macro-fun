@@ -3,7 +3,7 @@
 This is a practice workspace to play around with/learn Rust's procedural macros.
 
 The cool things:
-- `dev_only!` macro to remove code at compile time if you aren't building in debug mode.
+- `dev_only!` macro to remove code at compile time unless you're building in debug mode.
 - `amplify!` macro to demo modifying all string literals at compile time... makes them LOUDER ;-p
 
 The macro code is in the `macro-fun` crate. Example usage is in `greet` (a hello world program).
