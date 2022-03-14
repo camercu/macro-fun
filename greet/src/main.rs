@@ -5,7 +5,7 @@ use serde_json;
 
 fn main() {
     dev_only! {
-        println!("This line won't be in the release version!");
+        println!(amplify!("This line won't be in the release version!"));
     };
 
     // demo amplifying the CLI help and greeting strings
