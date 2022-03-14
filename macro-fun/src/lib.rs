@@ -48,6 +48,7 @@ pub fn amplify(item: TokenStream) -> TokenStream {
 
 /// Takes any token stream and returns an empty stream. That is, any code
 /// sent to blackhole will be removed from the compiled binary.
+#[allow(dead_code)]
 fn blackhole(_item: TokenStream) -> TokenStream {
     TokenStream::new()
 }
